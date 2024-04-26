@@ -7,5 +7,5 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
-    //
+    // show-all store edite delete show-one
 }
