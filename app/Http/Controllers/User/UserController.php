@@ -34,7 +34,7 @@ class UserController extends Controller
     }
 
     function myBook($user_id){
-        $book = Book::where('user_id',$user_id)->first();   
+        $book = Book::where('user_id',$user_id)->get();   
         if(!empty($book)){
             return response()->json($book);
         }
@@ -43,5 +43,7 @@ class UserController extends Controller
         }
 
     }
+
+
 
 }
