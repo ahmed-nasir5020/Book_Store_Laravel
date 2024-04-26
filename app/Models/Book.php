@@ -17,6 +17,7 @@ class Book extends Model
         'name',
         'description',
         'price',
+        'user_id'
     ];
      /**
      * relationship

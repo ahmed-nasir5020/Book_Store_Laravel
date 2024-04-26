@@ -11,14 +11,23 @@ class UserController extends Controller
 {
     // show-all create update delete show-one
     function index(){
-        
         //get all books form db 
         $allbooks = Book::all(['name','description','price']);
         //dispay book if not empty 
         if(!empty($allbooks)){
          return response()->json($allbooks);
         }
-        return response()->json('No Books Yet');
+        else{
+            return response()->json('No Books Yet');
+        }
+    }
+
+    function create(Request $request){
+     //validate
+
+     //sotre in db
+     Book::create(['name'=>$request->name,'description'=>$request->description,'price'=>$request->price]);
+    
     }
 
 }
