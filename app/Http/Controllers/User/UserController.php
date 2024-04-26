@@ -33,6 +33,15 @@ class UserController extends Controller
      return response()->json('created sucsessfully ');
     }
 
-    
+    function myBook($user_id){
+        $book = Book::where('user_id',$user_id)->first();   
+        if(!empty($book)){
+            return response()->json($book);
+        }
+        else{
+            return response()->json('No Book By This Id');
+        }
+
+    }
 
 }
