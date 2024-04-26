@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
+       /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+    ];
+     /**
+     * relationship
+     */
+    function user(){
+        return $this->belongsTo(User::class,'book_id');
+    }
 }
