@@ -26,8 +26,13 @@ class UserController extends Controller
      //validate
 
      //sotre in db
-     Book::create(['name'=>$request->name,'description'=>$request->description,'price'=>$request->price]);
+     $data =['name'=>$request->name,'description'=>$request->description,'price'=>$request->price,'user_id'=>$request->user_id];
+     Book::create($data);
     
+     //return message sucess or fail
+     return response()->json('created sucsessfully ');
     }
+
+    
 
 }
