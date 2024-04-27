@@ -22,5 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
    Route::get('user/allbook',[UserController::class,'index'])->name('user.all');
    Route::post('user/create',[UserController::class,'create'])->name('user.create');
    Route::get('user/myBook/{user_id}',[UserController::class,'myBook'])->name('user.myBook');
+   Route::post('user/edite/{id}',[UserController::class,'edite'])->name('user.edite');
 
 

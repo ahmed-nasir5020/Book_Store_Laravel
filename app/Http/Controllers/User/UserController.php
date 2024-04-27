@@ -15,7 +15,7 @@ class UserController extends Controller
         $allbooks = Book::all(['name','description','price']);
         //dispay book if not empty 
         if(!empty($allbooks)){
-         return response()->json($allbooks);
+         return response()->json(['data'=>$allbooks]);
         }
         else{
             return response()->json('No Books Yet');
@@ -44,6 +44,19 @@ class UserController extends Controller
 
     }
 
+    function edite(Request $request,$id){
+      //validation
 
+      //get data from db 
+    //   $data = Book::all();
+      //assing old data by new data 
+      $data['name'] = $request->name;
+      $data['description'] = $request->description;
+      $data['price'] = $request->price;
+          //update data in db
+          Book::where(['id'=>$id])->update($data);
+          //out
+          return response()->json(['msg'=> 'update sucess']);
+    }
 
 }
