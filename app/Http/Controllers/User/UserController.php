@@ -9,7 +9,8 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
-    // show-all create update delete show-one
+    
+    // show-all-books 
     function index(){
         //get all books form db 
         $allbooks = Book::all(['name','description','price']);
@@ -18,10 +19,12 @@ class UserController extends Controller
          return response()->json(['data'=>$allbooks]);
         }
         else{
-            return response()->json('No Books Yet');
+            return response()->json(['msg'=>'No Books Yet']);
         }
     }
 
+
+     //create-new-book
     function create(Request $request){
      //validate
 
@@ -30,25 +33,30 @@ class UserController extends Controller
      Book::create($data);
     
      //return message sucess or fail
-     return response()->json('created sucsessfully ');
+     return response()->json(['msg'=>'created sucsessfully']);
+    //  return response()->json(['msg'=>'created fail']);
     }
 
+
+     //show-book
     function myBook($user_id){
         $book = Book::where('user_id',$user_id)->get();   
         if(!empty($book)){
             return response()->json($book);
         }
         else{
-            return response()->json('No Book By This Id');
+            return response()->json(['msg'=>'No Book By This Id']);
         }
 
     }
 
+
+     //edite-book
     function edite(Request $request,$id){
       //validation
 
       //get data from db 
-    //   $data = Book::all();
+      //   $data = Book::all();
       //assing old data by new data 
       $data['name'] = $request->name;
       $data['description'] = $request->description;
@@ -57,6 +65,14 @@ class UserController extends Controller
           Book::where(['id'=>$id])->update($data);
           //out
           return response()->json(['msg'=> 'update sucess']);
-    }
+        //   return response()->json(['msg'=> 'update fail']);
+        }
 
+
+     //delete-book  
+    function delete($id){
+          Book::where('id',$id)->delete();
+         return response()->json(['msg'=> 'delete sucess']);
+        // return response()->json(['msg'=> 'id not found']);
+    }
 }
