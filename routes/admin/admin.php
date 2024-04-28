@@ -1,16 +1,52 @@
 <?php 
 
+use App\Models\Admin;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\AdminController;
 
 /*
 |--------------------------------------------------------------------------
-| user Routes
+| Admin Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register user routes for your application. These
+| Here is where you can register Admin routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "user" middleware group. Make something great!
+| be assigned to the "Admin" middleware group. Make something great!
 |
 */
 
+/*
+|--------------------------------------------------------------------------
+| login
+|--------------------------------------------------------------------------
+*/
+Route::group([
+    
+    'controller'=>LoginController::class,
+    'name'=>'admin',
+    'middleware'=> ['admin:admin','auth']
+    
+],function () {
+    
+    Route::post('login','login')->name('login');
+    
+});
+
+/*
+|--------------------------------------------------------------------------
+| Dashboard
+|--------------------------------------------------------------------------
+*/
+Route::group([
+    
+    'controller'=>AdminController::class,
+    'name'=>'admin',
+    'middleware'=> ['admin:admin','auth']
+    
+],function () {
+     
+Route::get('Dashboard','Dashboard')->name('Dashboard');
+
+});
