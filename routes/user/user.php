@@ -1,7 +1,9 @@
-<?php 
+<?php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\User\LoginController;
+use App\Http\Controllers\User\RegesterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,12 +15,48 @@ use App\Http\Controllers\User\UserController;
 | be assigned to the "user" middleware group. Make something great!
 |
 */
+    /*
+|--------------------------------------------------------------------------
+| login
+|--------------------------------------------------------------------------
+*/
+Route::group([
+    
+    'controller'=>LoginController::class,
+    'name'=>'user',
+    'middleware'=> ['web','auth']
+    
+],function () {
+     
+Route::post('login','login')->name('login');
 
+});
+    /*
+|--------------------------------------------------------------------------
+| Regester
+|--------------------------------------------------------------------------
+*/
+Route::group([
+    
+    'controller'=>RegesterController::class,
+    'name'=>'user',
+    'middleware'=> ['web']
+    
+],function () {
+    
+    Route::post('Regester','Regester')->name('Regester');
+
+});
+    /*
+|--------------------------------------------------------------------------
+| All-Route_Action
+|--------------------------------------------------------------------------
+*/
 Route::group([
     
     'controller'=>UserController::class,
     'name'=>'user',
-    'middleware'=> ['web']
+    'middleware'=> ['web','auth']
 
 ],function () {
 
