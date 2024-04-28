@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-//use Egulias\EmailValidator\Result\Reason\Reason;
+
 
 class UserController extends Controller
 {
@@ -53,20 +53,20 @@ class UserController extends Controller
 
      //edite-book
     function edite(Request $request,$id){
-      //validation
+           //validation
 
-      //get data from db 
-      //   $data = Book::all();
-      //assing old data by new data 
-      $data['name'] = $request->name;
-      $data['description'] = $request->description;
-      $data['price'] = $request->price;
+           //get data from db 
+           //   $data = Book::all();
+           //assing old data by new data 
+           $data['name'] = $request->name;
+           $data['description'] = $request->description;
+           $data['price'] = $request->price;
           //update data in db
           Book::where(['id'=>$id])->update($data);
           //out
           return response()->json(['msg'=> 'update sucess']);
         //   return response()->json(['msg'=> 'update fail']);
-        }
+    }
 
 
      //delete-book  
@@ -74,5 +74,10 @@ class UserController extends Controller
           Book::where('id',$id)->delete();
          return response()->json(['msg'=> 'delete sucess']);
         // return response()->json(['msg'=> 'id not found']);
+    }
+
+    //login
+    function login(){
+        
     }
 }
