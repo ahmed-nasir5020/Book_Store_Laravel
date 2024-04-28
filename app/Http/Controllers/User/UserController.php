@@ -9,8 +9,11 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
-    
-    // show-all-books 
+/*
+|--------------------------------------------------------------------------
+| show-all-books 
+|--------------------------------------------------------------------------
+*/
     function index(){
         //get all books form db 
         $allbooks = Book::all(['name','description','price']);
@@ -23,8 +26,12 @@ class UserController extends Controller
         }
     }
 
-
-     //create-new-book
+/*
+|--------------------------------------------------------------------------
+| create-new-book 
+|--------------------------------------------------------------------------
+*/
+     
     function create(Request $request){
      //validate
 
@@ -38,7 +45,12 @@ class UserController extends Controller
     }
 
 
-     //show-book
+/*
+|--------------------------------------------------------------------------
+| show-book
+|--------------------------------------------------------------------------
+*/
+     
     function myBook($user_id){
         $book = Book::where('user_id',$user_id)->get();   
         if(!empty($book)){
@@ -50,8 +62,12 @@ class UserController extends Controller
 
     }
 
-
-     //edite-book
+/*
+|--------------------------------------------------------------------------
+| edite-book
+|--------------------------------------------------------------------------
+*/
+    
     function edite(Request $request,$id){
            //validation
 
@@ -68,16 +84,16 @@ class UserController extends Controller
         //   return response()->json(['msg'=> 'update fail']);
     }
 
-
-     //delete-book  
+/*
+|--------------------------------------------------------------------------
+| delete-book 
+|--------------------------------------------------------------------------
+*/
+     
     function delete($id){
           Book::where('id',$id)->delete();
          return response()->json(['msg'=> 'delete sucess']);
         // return response()->json(['msg'=> 'id not found']);
     }
 
-    //login
-    function login(){
-        
-    }
 }

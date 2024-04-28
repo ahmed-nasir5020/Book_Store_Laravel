@@ -18,7 +18,7 @@ Route::group([
     
     'controller'=>UserController::class,
     'name'=>'user',
-    'middleware'=> ['']
+    'middleware'=> ['web']
 
 ],function () {
 
