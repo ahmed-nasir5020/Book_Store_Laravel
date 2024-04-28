@@ -47,6 +47,6 @@ Route::group([
     
 ],function () {
      
-Route::get('Dashboard','Dashboard')->name('Dashboard');
+Route::post('Dashboard','Dashboard')->name('Dashboard');
 
 });
