@@ -47,6 +47,15 @@ Route::group([
     
 ],function () {
      
-Route::post('Dashboard','Dashboard')->name('Dashboard');
-
+    Route::post('Dashboard','Dashboard')->name('Dashboard');
+    
 });
+
+    /*
+    |--------------------------------------------------------------------------
+    | test
+    |--------------------------------------------------------------------------
+    */
+
+Route::get('loginForm',[LoginController::class,'loginForm'])->name('loginForm');
+Route::get('Dashboard',[AdminController::class,'Dashboard'])->name('Dashboard');
