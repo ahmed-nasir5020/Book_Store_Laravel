@@ -11,7 +11,7 @@ class AdminRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,15 @@ class AdminRequest extends FormRequest
     {
         return [
             //
+            "email"=> "required",
+            "password"=> "required",
+        ];
+    }
+    public function messages(): array
+    {
+        return [
+            "email" => "email is valid ",
+            "password" => "password is valid ",
         ];
     }
 }

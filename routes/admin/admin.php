@@ -56,5 +56,5 @@ Route::group([
     |--------------------------------------------------------------------------
     */
 
-Route::get('loginForm',[LoginController::class,'loginForm'])->name('loginForm');
-Route::get('Dashboard',[AdminController::class,'Dashboard'])->name('Dashboard');
+// Route::get('loginForm',[LoginController::class,'loginForm'])->name('loginForm');
+// Route::get('Dashboard',[AdminController::class,'Dashboard'])->name('Dashboard');

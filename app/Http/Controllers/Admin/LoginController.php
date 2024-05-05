@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminRequest;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -25,15 +25,15 @@ function loginForm(){
 */
 
 
-function login(Request $request){
-    //validadtion
-
+function login(AdminRequest $request){
     //get data form db
     $admin = request(["email","password"]);
     if(Auth::guard('admin')->attempt($admin)){
-        return response()->json(['msg'=>'you are login Dashboard']);
+        // return response()->json(['msg'=>'you are login Dashboard']);
+        return redirect()->action('Dashboard');
     }else{
-        return response()->json(['msg'=>'you are not login Dashboard']);
+        // return response()->json(['msg'=>'you are not login Dashboard']);
+        return redirect()->route('login');
 
     }
 }
