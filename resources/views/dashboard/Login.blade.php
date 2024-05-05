@@ -38,7 +38,7 @@
   <body class="text-center">
     
 <main class="form-signin">
-  <form method="post" action="">
+  <form method="post" action="{{route('admin/login')}}">
     @csrf
     <img class="mb-4" src="{{ asset('img/admin.jpeg') }}" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">Please sign in Admin</h1>

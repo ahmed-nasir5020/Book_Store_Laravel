@@ -25,7 +25,7 @@ function loginForm(){
 */
 
 
-function login(AdminRequest $request){
+function adminLogin(AdminRequest $request){
     //get data form db
     $admin = request(["email","password"]);
     if(Auth::guard('admin')->attempt($admin)){
@@ -33,7 +33,7 @@ function login(AdminRequest $request){
         return redirect()->action('Dashboard');
     }else{
         // return response()->json(['msg'=>'you are not login Dashboard']);
-        return redirect()->route('login');
+        return redirect()->route('admin/loginform');
 
     }
 }

@@ -29,7 +29,8 @@ Route::group([
     
 ],function () {
     
-    Route::post('login','login')->name('login');
+    Route::get('login','loginForm')->name('admin/loginform');
+    Route::post('login','adminLogin')->name('admin/login');
     
 });
 

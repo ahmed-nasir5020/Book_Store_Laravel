@@ -27,7 +27,7 @@ Route::group([
     
 ],function () {
      
-Route::post('login','login')->name('login');
+Route::post('login','login')->name('user.login');
 
 });
     /*
@@ -42,7 +42,7 @@ Route::group([
     
 ],function () {
     
-    Route::post('Regester','Regester')->name('Regester');
+    Route::post('Regester','Regester')->name('user.Regester');
 
 });
     /*
