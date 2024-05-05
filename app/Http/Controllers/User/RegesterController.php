@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
 
 class RegesterController extends Controller
 {
@@ -15,17 +15,17 @@ class RegesterController extends Controller
 */
 
 
-function Regester(Request $request){
-  //vaidation 
+function Regester(UserRequest $request){
 
   $user['name'] = $request->name;
   $user['email'] = $request->email;
   $user['password'] = bcrypt($request->password);
   
-  //save in db 
+  //save store in db 
   User::save($user);
 
-  return response()->json(['msg'=>'user are regester']);
+  // return response()->json(['msg'=>'user are regester']);
+  return redirect()->route('login')->with(['msg'=>'user are regester']);
 
 }
 

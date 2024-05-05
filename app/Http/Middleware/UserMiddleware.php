@@ -15,6 +15,11 @@ class UserMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+      /*
+      |--------------------------------------------------------------------------
+      | logic user middleware
+      |--------------------------------------------------------------------------
+      */
         return $next($request);
     }
 }

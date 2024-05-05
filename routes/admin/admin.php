@@ -1,7 +1,6 @@
 <?php 
 
-use App\Models\Admin;
-use Illuminate\Auth\Events\Login;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\AdminController;
@@ -26,7 +25,7 @@ Route::group([
     
     'controller'=>LoginController::class,
     'name'=>'admin',
-    'middleware'=> ['admin:admin','auth']
+    
     
 ],function () {
     
@@ -47,7 +46,7 @@ Route::group([
     
 ],function () {
      
-    Route::post('Dashboard','Dashboard')->name('Dashboard');
+    Route::get('Dashboard','Dashboard')->name('Dashboard');
     
 });
 

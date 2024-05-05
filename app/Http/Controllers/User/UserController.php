@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\Book;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -32,7 +31,7 @@ class UserController extends Controller
 |--------------------------------------------------------------------------
 */
      
-    function create(Request $request){
+    function create(UserRequest $request){
      //validate
 
      //sotre in db
@@ -68,7 +67,7 @@ class UserController extends Controller
 |--------------------------------------------------------------------------
 */
     
-    function edite(Request $request,$id){
+    function edite(UserRequest $request,$id){
            //validation
 
            //get data from db 
@@ -91,7 +90,7 @@ class UserController extends Controller
 */
      
     function delete($id){
-          Book::where('id',$id)->delete();
+         Book::where('id',$id)->delete();
          return response()->json(['msg'=> 'delete sucess']);
         // return response()->json(['msg'=> 'id not found']);
     }

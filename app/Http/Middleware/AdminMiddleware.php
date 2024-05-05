@@ -15,6 +15,11 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+      /*
+      |--------------------------------------------------------------------------
+      | logic admin middleware
+      |--------------------------------------------------------------------------
+      */
         return $next($request);
     }
 }

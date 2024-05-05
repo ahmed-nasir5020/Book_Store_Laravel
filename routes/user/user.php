@@ -24,7 +24,6 @@ Route::group([
     
     'controller'=>LoginController::class,
     'name'=>'user',
-    'middleware'=> ['web','auth']
     
 ],function () {
      
@@ -39,8 +38,7 @@ Route::post('login','login')->name('login');
 Route::group([
     
     'controller'=>RegesterController::class,
-    'name'=>'user',
-    'middleware'=> ['web']
+    'name'=>'user', 
     
 ],function () {
     
