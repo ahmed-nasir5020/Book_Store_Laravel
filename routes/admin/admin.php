@@ -24,16 +24,16 @@ use App\Http\Controllers\Admin\AdminController;
 Route::group([
     
     'controller'=>LoginController::class,
-    'name'=>'admin',
+    
     
     
 ],function () {
     
-    Route::get('login','loginForm')->name('admin/loginform');
-    Route::post('login','adminLogin')->name('admin/login');
+    Route::get('loginform','loginForm')->name('admin/loginform');
     
 });
 
+Route::post('login',[LoginController::class,'adminLogin'])->name('admin/login');
 /*
 |--------------------------------------------------------------------------
 | Dashboard
@@ -43,7 +43,7 @@ Route::group([
     
     'controller'=>AdminController::class,
     'name'=>'admin',
-    'middleware'=> ['admin:admin','auth']
+    'middleware'=> ['auth:admin']
     
 ],function () {
      

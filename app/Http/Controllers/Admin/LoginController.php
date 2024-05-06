@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminRequest;
+use App\Models\Admin;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    
 /*
 |--------------------------------------------------------------------------
 | Login-form
@@ -16,7 +18,7 @@ class LoginController extends Controller
 
 
 function loginForm(){
-  return view("dashboard/Login");
+   return view("dashboard/Login");
 }
 /*
 |--------------------------------------------------------------------------
@@ -26,13 +28,11 @@ function loginForm(){
 
 
 function adminLogin(AdminRequest $request){
-    //get data form db
+    //get data form
     $admin = request(["email","password"]);
     if(Auth::guard('admin')->attempt($admin)){
-        // return response()->json(['msg'=>'you are login Dashboard']);
-        return redirect()->action('Dashboard');
+        return redirect()->route('Dashboard');
     }else{
-        // return response()->json(['msg'=>'you are not login Dashboard']);
         return redirect()->route('admin/loginform');
 
     }

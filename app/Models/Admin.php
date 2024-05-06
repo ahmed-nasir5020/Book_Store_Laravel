@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Admin extends Model
+class Admin extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table = 'admins';
     /**
      * The attributes that are mass assignable.
      *
@@ -20,6 +22,7 @@ class Admin extends Model
         'name',
         'email',
         'password',
+        
     ];
 
     /**
@@ -40,10 +43,12 @@ class Admin extends Model
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
      /**
      * relationship
      */
     function  user(){
         return $this->hasMany(User::class,'user_id');
 }
+
 }
