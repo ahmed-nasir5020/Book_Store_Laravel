@@ -27,10 +27,10 @@ function loginForm(){
 */
 
 
-function adminLogin(AdminRequest $request){
+function adminLogin(AdminRequest $request, $guard){
     //get data form
     $admin = request(["email","password"]);
-    if(Auth::guard('admin')->attempt($admin)){
+    if(Auth::guard('admin')->attempt($admin) && $guard == 'admin'){
         return redirect()->route('Dashboard');
     }else{
         return redirect()->route('admin/loginform');
